@@ -1,0 +1,25 @@
+{
+  "name": "penguin-contracts-deployed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Penguin-Finance/penguin-contracts-deployed.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Penguin-Finance/penguin-contracts-deployed/issues"
+  },
+  "homepage": "https://github.com/Penguin-Finance/penguin-contracts-deployed#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.1.0"
+  }
+}
