@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/Penguin-Finance/penguin-contracts-deployed#readme",
   "dependencies": {
-    "@openzeppelin/contracts": "^4.1.0"
+    "@openzeppelin/contracts": "^4.1.0",
+    "@truffle/hdwallet-provider": "^1.4.1",
+    "dotenv": "^10.0.0"
   }
 }

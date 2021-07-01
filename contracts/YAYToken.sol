@@ -5,15 +5,10 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 pragma solidity >=0.6.12;
 
 // YAYToken with Governance.
-contract YAYToken is ERC20("YAYToken", "YAY"), Ownable {
+contract YAYToken is ERC20("YAY", "YAY"), Ownable {
     using SafeMath for uint256;
 
-    string public constant name = "YAY";
-    string public constant symbol = "YAY";
-    uint8 public constant decimals = 10;
-    uint256 public constant totalSupply = 1100000000000000000;
-    mapping(address => uint256) public balanceOf;
-    mapping(address => mapping(address => uint256)) public allowance;
+    uint256 public constant initialSupply = 1100000000000000000;
 
     bytes32 public DOMAIN_SEPARATOR;
     // keccak256("Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)");
@@ -21,73 +16,27 @@ contract YAYToken is ERC20("YAYToken", "YAY"), Ownable {
         0x6e71edae12b1b97f4d1f60370fef10105fa2faae0126114a169c64845d6126c9;
     mapping(address => uint256) public nonces;
 
-    event Approval(
-        address indexed owner,
-        address indexed spender,
-        uint256 value
-    );
-    event Transfer(address indexed from, address indexed to, uint256 value);
-
     constructor(address initialTotalSupplyHolder) public {
         uint256 chainId;
         assembly {
-            chainId := chainid
+            chainId := chainid()
         }
         DOMAIN_SEPARATOR = keccak256(
             abi.encode(
                 keccak256(
                     "EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)"
                 ),
-                keccak256(bytes(name)),
+                keccak256(bytes(name())),
                 keccak256(bytes("1")),
                 chainId,
                 address(this)
             )
         );
-        balanceOf[initialTotalSupplyHolder] = totalSupply;
+        _mint(initialTotalSupplyHolder, initialSupply);
     }
 
-    function _approve(
-        address owner,
-        address spender,
-        uint256 value
-    ) private {
-        allowance[owner][spender] = value;
-        emit Approval(owner, spender, value);
-    }
-
-    function _transfer(
-        address from,
-        address to,
-        uint256 value
-    ) private {
-        balanceOf[from] = balanceOf[from].sub(value);
-        balanceOf[to] = balanceOf[to].add(value);
-        emit Transfer(from, to, value);
-    }
-
-    function approve(address spender, uint256 value) external returns (bool) {
-        _approve(msg.sender, spender, value);
-        return true;
-    }
-
-    function transfer(address to, uint256 value) external returns (bool) {
-        _transfer(msg.sender, to, value);
-        return true;
-    }
-
-    function transferFrom(
-        address from,
-        address to,
-        uint256 value
-    ) external returns (bool) {
-        if (allowance[from][msg.sender] != uint256(-1)) {
-            allowance[from][msg.sender] = allowance[from][msg.sender].sub(
-                value
-            );
-        }
-        _transfer(from, to, value);
-        return true;
+    function decimals() public view virtual override returns (uint8) {
+        return 10;
     }
 
     // Burns the callers tokens
@@ -105,23 +54,22 @@ contract YAYToken is ERC20("YAYToken", "YAY"), Ownable {
         bytes32 s
     ) external {
         require(deadline >= block.timestamp, "YAY: EXPIRED");
-        bytes32 digest =
-            keccak256(
-                abi.encodePacked(
-                    "\x19\x01",
-                    DOMAIN_SEPARATOR,
-                    keccak256(
-                        abi.encode(
-                            PERMIT_TYPEHASH,
-                            owner,
-                            spender,
-                            value,
-                            nonces[owner]++,
-                            deadline
-                        )
+        bytes32 digest = keccak256(
+            abi.encodePacked(
+                "\x19\x01",
+                DOMAIN_SEPARATOR,
+                keccak256(
+                    abi.encode(
+                        PERMIT_TYPEHASH,
+                        owner,
+                        spender,
+                        value,
+                        nonces[owner]++,
+                        deadline
                     )
                 )
-            );
+            )
+        );
         address recoveredAddress = ecrecover(digest, v, r, s);
         require(
             recoveredAddress != address(0) && recoveredAddress == owner,
