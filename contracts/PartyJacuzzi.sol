@@ -5,11 +5,11 @@ import "./YAYToken.sol";
 
 pragma solidity >=0.6.12;
 
-// PartyJacuzzis is the coolest bar in town. You come in with some YAY, and leave
+// PartyJacuzzi is the coolest bar in town. You come in with some YAY, and leave
 // with more! The longer you stay, the more YAY you get.
 //
 // This contract handles swapping to and from xYAY, PartFinance's staking token.
-contract PartyJacuzzis is ERC20("PartyJacuzzis", "xYAY"), Ownable {
+contract PartyJacuzzi is ERC20("PartyJacuzzi", "xYAY"), Ownable {
     using SafeMath for uint256;
     YAYToken public yay;
 

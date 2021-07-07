@@ -31,7 +31,7 @@ module.exports = {
       provider: function () {
         return new HDWalletProvider({
           mnemonic,
-          providerOrUrl: `https://avalanche--mainnet--rpc.datahub.figment.io/apikey/${APIKEY}/ext/bc/C/rpc`,
+          providerOrUrl: `https://api.avax.network/ext/bc/C/rpc`,
           chainId: "0xa86a"
         })
       },

@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 pragma solidity >=0.6.12;
 
 // YAYToken with Governance.
-contract YAYToken is ERC20("YAY", "YAY"), Ownable {
+contract YAYToken is ERC20("PUPU Token", "PUPU"), Ownable {
     using SafeMath for uint256;
 
     uint256 public constant initialSupply = 1100000000000000000;
