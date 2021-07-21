@@ -55,10 +55,3 @@ Replacing 'PartyJacuzzi'
 > gas price: 225 gwei
 > value sent: 0 ETH
 > total cost: 0.30394935 ETH
-
-> Saving migration to chain.
-> Saving artifacts
-
----
-
-> Total cost: 0.30394935 ETH
