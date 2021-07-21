@@ -29,6 +29,10 @@ contract PartyJacuzzi is ERC20("PartyJacuzzi", "xYAY"), Ownable {
         unlockDate = block.timestamp.add(LOCK_PERIOD);
     }
 
+    function decimals() public view virtual override returns (uint8) {
+        return 10;
+    }
+
     // Enter the bar. Pay some YAY. Earn some shares.
     // Locks YAY and mints xYay
     function enter(uint256 _amount) public {
