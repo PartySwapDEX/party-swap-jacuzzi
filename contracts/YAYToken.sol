@@ -4,14 +4,12 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 pragma solidity >=0.6.12;
 
-// YAYToken with Governance.
-contract YAYToken is ERC20("PUPU Token", "PUPU"), Ownable {
+contract YAYToken is ERC20("YAY", "YAY"), Ownable {
     using SafeMath for uint256;
 
-    uint256 public constant initialSupply = 1100000000000000000;
+    uint256 public constant initialSupply = 110000000000000000000000000;
 
     bytes32 public DOMAIN_SEPARATOR;
-    // keccak256("Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)");
     bytes32 public constant PERMIT_TYPEHASH =
         0x6e71edae12b1b97f4d1f60370fef10105fa2faae0126114a169c64845d6126c9;
     mapping(address => uint256) public nonces;
@@ -33,10 +31,6 @@ contract YAYToken is ERC20("PUPU Token", "PUPU"), Ownable {
             )
         );
         _mint(initialTotalSupplyHolder, initialSupply);
-    }
-
-    function decimals() public view virtual override returns (uint8) {
-        return 10;
     }
 
     // Burns the callers tokens

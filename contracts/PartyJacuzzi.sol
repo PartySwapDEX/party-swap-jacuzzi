@@ -15,7 +15,7 @@ contract PartyJacuzzi is ERC20("PartyJacuzzi", "xYAY"), Ownable {
 
     uint256 public constant MAX_EARLY_WITHDRAW_FEE = 10000;
     // This is a variable that can be changed by the owner
-    uint256 public earlyWithdrawalFee = 2500;
+    uint256 public earlyWithdrawalFee = 2000;
 
     // Start time of when this contract was created
     uint256 public unlockDate;
