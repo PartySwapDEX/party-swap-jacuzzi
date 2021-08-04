@@ -1,4 +1,4 @@
-## 'YAYToken' FUJI
+# 'YAYToken' FUJI
 
 - transaction hash: 0x1ed143b32165435b429b68cee2f91a79af12561e72fbbb23d37b1528714cc96f
 - Blocks: 2 Seconds: 4
@@ -12,29 +12,30 @@
 - value sent: 0 ETH
 - total cost: 0.26452935 ETH
 
-## JACUZZI
+# JACUZZI
 
-# 2_deploy_contracts.js
+## Replacing 'PartyJacuzzi'
 
-Replacing 'PartyJacuzzi'
-
----
-
-- transaction hash: 0xd3b490f2ac12b5780b5277e1694bba74ff64cd445ea687db51ae83fc8cf86299
+- transaction hash: 0xe8cfb6dac070699d5064bfb7cf63fe1520a2e1ba398daf1db1c30cf657aa2835
 - Blocks: 1 Seconds: 4
-- contract address: 0xa9D9D5e3E598f003e4760975d520BDeB4446803D
-- block number: 599895
-- block timestamp: 1627275725
+- contract address: 0x7C1E73122d26Af78C44FaB3c5e10a7eaa4ED2b59
+- block number: 655642
+- block timestamp: 1627922026
 - account: 0x3b73F15142945f260148aDa3Db15b0657D12831C
-- balance: 10.381182825
-- gas used: 1350862 (0x149cce)
+- balance: 9.257644425
+- gas used: 1350874 (0x149cda)
 - gas price: 225 gwei
 - value sent: 0 ETH
-- total cost: 0.30394395 ETH
+- total cost: 0.30394665 ETH
 
 - Saving migration to chain.
 - Saving artifacts
 
 ---
 
-- Total cost: 0.30394395 ETH
+- Total cost: 0.30394665 ETH
+
+# Summary
+
+- Total deployments: 2
+- Final cost: 0.34084395 ETH
