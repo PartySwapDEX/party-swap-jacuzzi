@@ -1,7 +1,7 @@
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "./YAYToken.sol";
+import "yay-token/contracts/YAYToken.sol";
 
 pragma solidity >=0.6.12;
 
@@ -15,7 +15,7 @@ contract PartyJacuzzi is ERC20("PartyJacuzzi", "xYAY"), Ownable {
 
     uint256 public constant MAX_EARLY_WITHDRAW_FEE = 10000;
     // This is a variable that can be changed by the owner
-    uint256 public earlyWithdrawalFee = 2500;
+    uint256 public earlyWithdrawalFee = 2000;
 
     // Start time of when this contract was created
     uint256 public unlockDate;
@@ -27,10 +27,6 @@ contract PartyJacuzzi is ERC20("PartyJacuzzi", "xYAY"), Ownable {
     constructor(YAYToken _yay) public {
         yay = _yay;
         unlockDate = block.timestamp.add(LOCK_PERIOD);
-    }
-
-    function decimals() public view virtual override returns (uint8) {
-        return 10;
     }
 
     // Enter the bar. Pay some YAY. Earn some shares.
