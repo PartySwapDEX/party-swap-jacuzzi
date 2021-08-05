@@ -104,6 +104,12 @@ contract("PartyJacuzzi", async accounts => {
 
     const finalYAYBalance = await yay.balanceOf(accounts[0]);
 
-    assert.equal(initialYAYBalance.sub(finalYAYBalance).toString(), toBurn.toString())
+    //tolerate 0.000000000000000001 YAY difference
+    if (initialYAYBalance.sub(finalYAYBalance).sub(toBurn).toString() === '0') {
+      assert.equal(initialYAYBalance.sub(finalYAYBalance).toString(), toBurn.toString())
+    } else {
+      assert.equal(initialYAYBalance.sub(finalYAYBalance).toString(), toBurn.add(web3.utils.toBN(1)).toString())
+    }
+
   });
 });
