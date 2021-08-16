@@ -12,13 +12,13 @@
 - value sent: 0 ETH
 - total cost: 0.26452935 ETH
 
-# JACUZZI
+# JACUZZI FUJI
 
 ## Replacing 'PartyJacuzzi'
 
 - transaction hash: 0xe8cfb6dac070699d5064bfb7cf63fe1520a2e1ba398daf1db1c30cf657aa2835
 - Blocks: 1 Seconds: 4
-- contract address: 0x7C1E73122d26Af78C44FaB3c5e10a7eaa4ED2b59
+- contract address: 0xc3175E89cE175f6C752D152Deec6F682e873636c
 - block number: 655642
 - block timestamp: 1627922026
 - account: 0x3b73F15142945f260148aDa3Db15b0657D12831C
@@ -39,3 +39,5 @@
 
 - Total deployments: 2
 - Final cost: 0.34084395 ETH
+
+================================================
