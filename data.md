@@ -1,3 +1,28 @@
+# JACUZZI AVALANCHE
+
+Replacing 'PartyJacuzzi'
+
+---
+
+- transaction hash: 0x7b5ca315e4ce39c26f2f84b5a4379c955f6705a8d65ef64d6e21207192ca13a0
+- Blocks: 0 Seconds: 4
+- contract address: 0x68583A0a7e763400B8B0904095133F76922657ae
+- block number: 3017360
+- block timestamp: 1629169956
+- account: 0x3b73F15142945f260148aDa3Db15b0657D12831C
+- balance: 3.286105179419404813
+- gas used: 1350886 (0x149ce6)
+- gas price: 225 gwei
+- value sent: 0 ETH
+- total cost: 0.30394935 ETH
+
+- Saving migration to chain.
+- Saving artifacts
+
+---
+
+- Total cost: 0.30394935 ETH
+
 # 'YAYToken' FUJI
 
 - transaction hash: 0x1ed143b32165435b429b68cee2f91a79af12561e72fbbb23d37b1528714cc96f
