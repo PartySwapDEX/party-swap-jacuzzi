@@ -13,9 +13,9 @@ contract PartyJacuzzi is ERC20("PartyJacuzzi", "xYAY"), Ownable {
     using SafeMath for uint256;
     YAYToken public yay;
 
-    uint256 public constant MAX_EARLY_WITHDRAW_FEE = 10000;
+    uint256 public constant MAX_EARLY_WITHDRAW_FEE_PERCENTAGE_BASE = 100;
     // This is a variable that can be changed by the owner
-    uint256 public earlyWithdrawalFee = 2000;
+    uint256 public earlyWithdrawalFeePortionFromPercentageBase = 20;
 
     // Start time of when this contract was created
     uint256 public unlockDate;
@@ -64,9 +64,9 @@ contract PartyJacuzzi is ERC20("PartyJacuzzi", "xYAY"), Ownable {
         if (block.timestamp >= unlockDate) {
             yay.transfer(msg.sender, what);
         } else {
-            uint256 toBurn = what.mul(earlyWithdrawalFee).div(
-                MAX_EARLY_WITHDRAW_FEE
-            );
+            uint256 toBurn = what
+                .mul(earlyWithdrawalFeePortionFromPercentageBase)
+                .div(MAX_EARLY_WITHDRAW_FEE_PERCENTAGE_BASE);
             // Send the person's YAY to their address
             yay.transfer(msg.sender, what.sub(toBurn));
             // BURN the YAY in this address
@@ -80,9 +80,9 @@ contract PartyJacuzzi is ERC20("PartyJacuzzi", "xYAY"), Ownable {
         onlyOwner
     {
         require(
-            _earlyWithdrawalFee <= MAX_EARLY_WITHDRAW_FEE,
+            _earlyWithdrawalFee <= MAX_EARLY_WITHDRAW_FEE_PERCENTAGE_BASE,
             "Can't have withdrawal fee greater than 100%"
         );
-        earlyWithdrawalFee = _earlyWithdrawalFee;
+        earlyWithdrawalFeePortionFromPercentageBase = _earlyWithdrawalFee;
     }
 }
