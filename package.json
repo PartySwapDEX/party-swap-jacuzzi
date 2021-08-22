@@ -1,29 +1,33 @@
 {
-  "name": "penguin-contracts-deployed",
+  "name": "@partyswap-libs/party-jacuzzi",
   "version": "1.0.0",
   "description": "",
   "main": "truffle-config.js",
   "directories": {
     "test": "test"
   },
+  "files": [
+    "build",
+    "contracts"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Penguin-Finance/penguin-contracts-deployed.git"
+    "url": "git+https://github.com/PartySwapDEX/party-swap-jacuzzi"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Penguin-Finance/penguin-contracts-deployed/issues"
+    "url": "https://github.com/PartySwapDEX/party-swap-jacuzzi/issues"
   },
-  "homepage": "https://github.com/Penguin-Finance/penguin-contracts-deployed#readme",
+  "homepage": "https://github.com/PartySwapDEX/party-swap-jacuzzi#readme",
   "dependencies": {
     "@openzeppelin/contracts": "^4.1.0",
     "@truffle/hdwallet-provider": "^1.4.1",
     "dotenv": "^10.0.0",
     "web3": "^1.5.0",
-    "yay-token": "^1.0.0"
+    "yay-token": "^2.0.1"
   }
 }

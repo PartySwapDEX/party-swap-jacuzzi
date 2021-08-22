@@ -6,17 +6,17 @@ const YAY_ADDRESS = '0xEbD7fF328bC30087720e427CB8f11E9Bd8aF7d8A';
 
 // May want to toggle comment on this part if testing next in fuji network, to avoid 'Unfinalized data query errors'.
 // contract("PartyJacuzzi", async accounts => {
-//   it("Should be an xYAY token named PartyJacuzzi", async () => {
+//   it("Should be an xPARTY token named PartyJacuzzi", async () => {
 //     const instance = await PartyJacuzzi.deployed();
 //     const symbol = await instance.symbol.call();
 //     const name = await instance.name.call();
 //     const decimals = await instance.decimals.call();
-//     assert.equal(symbol.valueOf(), 'xYAY');
+//     assert.equal(symbol.valueOf(), 'xPARTY');
 //     assert.equal(name.valueOf(), 'PartyJacuzzi');
 //     assert.equal(decimals.valueOf(), 18);
 //   });
 
-//   it("YAY address must match", async () => {
+//   it("PARTY address must match", async () => {
 //     const instance = await PartyJacuzzi.deployed();
 //     const JacuzziYAY = await instance.yay.call();
 //     assert.equal(YAY_ADDRESS, JacuzziYAY);
@@ -33,14 +33,14 @@ const YAY_ADDRESS = '0xEbD7fF328bC30087720e427CB8f11E9Bd8aF7d8A';
 
 // Toggle comment if want to skip this part
 contract("PartyJacuzzi", async accounts => {
-  //costs YAY
+  //costs PARTY
   it("Entering with no previous supply should increase balance by 1:1", async () => {
     const instance = await PartyJacuzzi.deployed();
     const yay = await YAYToken.at(YAY_ADDRESS);
     const ammount = web3.utils.toBN(1000);
 
     const initialAccountBalance = await instance.balanceOf(accounts[0]);
-    //approve entering YAY into Jacuzzi
+    //approve entering PARTY into Jacuzzi
     await yay.approve(instance.address, ammount);
     await instance.enter(ammount);
     const finalAccountBalance = await instance.balanceOf(accounts[0]);
@@ -48,14 +48,14 @@ contract("PartyJacuzzi", async accounts => {
     assert.equal(initialAccountBalance.toString(), finalAccountBalance.sub(ammount).toString());
   });
 
-  // costs YAY
-  it("Entering with previous supply and more jacuzzi YAY balance should increase balance with a ratio difference", async () => {
+  // costs PARTY
+  it("Entering with previous supply and more jacuzzi PARTY balance should increase balance with a ratio difference", async () => {
     const instance = await PartyJacuzzi.deployed();
     const yay = await YAYToken.at(YAY_ADDRESS);
 
     const ammount = web3.utils.toBN(1000);
 
-    //approve entering YAY into Jacuzzi
+    //approve entering PARTY into Jacuzzi
     await yay.approve(instance.address, ammount);
 
     //enter and mint 1:1
@@ -63,7 +63,7 @@ contract("PartyJacuzzi", async accounts => {
 
     const middleAccountBalance = await instance.balanceOf(accounts[0]);
 
-    //alter YAY / xYAY ratio
+    //alter PARTY / xPARTY ratio
     await yay.transfer(instance.address, Math.round(Math.random() * 1000));
 
     const totalYAY = await yay.balanceOf(instance.address);
@@ -71,7 +71,7 @@ contract("PartyJacuzzi", async accounts => {
 
     const what = ammount.mul(totalShares).div(totalYAY);
 
-    //approve entering more YAY into Jacuzzi
+    //approve entering more PARTY into Jacuzzi
     await yay.approve(instance.address, ammount);
 
     //enter and mint with different ratio
@@ -81,7 +81,7 @@ contract("PartyJacuzzi", async accounts => {
     assert.equal("0", finalAccountBalance.sub(what).sub(middleAccountBalance).toString());
   });
 
-  it("Leaving before unlock date, should give us our YAY back minus fees", async () => {
+  it("Leaving before unlock date, should give us our PARTY back minus fees", async () => {
     const instance = await PartyJacuzzi.deployed();
     const yay = await YAYToken.at(YAY_ADDRESS);
     const ammount = web3.utils.toBN(1000);
@@ -89,17 +89,17 @@ contract("PartyJacuzzi", async accounts => {
     const initialYAYBalance = await yay.balanceOf(accounts[0]);
     const initialShares = await instance.balanceOf(accounts[0]);
 
-    //approve entering YAY into Jacuzzi
+    //approve entering PARTY into Jacuzzi
     await yay.approve(instance.address, ammount);
     //enter
     await instance.enter(ammount);
 
-    const jacuzziYayBalance = await yay.balanceOf(instance.address);
+    const jacuzziPartyBalance = await yay.balanceOf(instance.address);
     const instanceTotalShares = await instance.totalSupply();
     const middleShares = await instance.balanceOf(accounts[0]);
 
     const sharesToTakeBack = middleShares.gte(initialShares) ? middleShares.sub(initialShares) : initialShares.sub(middleShares);
-    const what = sharesToTakeBack.mul(jacuzziYayBalance).div(instanceTotalShares);
+    const what = sharesToTakeBack.mul(jacuzziPartyBalance).div(instanceTotalShares);
 
     const earlyWithdrawalFee = await instance.earlyWithdrawalFeePortionFromPercentageBase();
     const MAX_EARLY_WITHDRAW_FEE = await instance.MAX_EARLY_WITHDRAW_FEE_PERCENTAGE_BASE();
@@ -110,7 +110,7 @@ contract("PartyJacuzzi", async accounts => {
 
     const finalYAYBalance = await yay.balanceOf(accounts[0]);
 
-    //tolerate 0.000000000000000001 YAY difference
+    //tolerate 0.000000000000000001 PARTY difference
     if (initialYAYBalance.sub(finalYAYBalance).sub(toBurn).toString() === '0') {
       assert.equal(initialYAYBalance.sub(finalYAYBalance).toString(), toBurn.toString())
     } else {
