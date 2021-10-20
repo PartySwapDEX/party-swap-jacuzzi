@@ -4,24 +4,17 @@ Replacing 'PartyJacuzzi'
 
 ---
 
-- transaction hash: 0x3e0d895656a6dc002c6b1770389c51a95e370bc478aec4472a405b949245805a
-- Blocks: 0 Seconds: 0
-- contract address: 0x5905835E7F5bA05AFa896A42d9d44185Affc4514
-- block number: 1993874
-- block timestamp: 1633918986
+- transaction hash: 0x8fbb4dff57d44feff447794e3388c013c24da4c36ed8ef64f7fc1a2b121fea27
+- Blocks: 2 Seconds: 4
+- contract address: 0xA07d1932775f22DaeDA671812c16F859b4257363
+- block number: 5853149
+- block timestamp: 1634690082
 - account: 0x3b73F15142945f260148aDa3Db15b0657D12831C
-- balance: 3.973714658904306
+- balance: 0.321391444681094776
 - gas used: 1350206 (0x149a3e)
 - gas price: 225 gwei
 - value sent: 0 ETH
 - total cost: 0.30379635 ETH
-
-- Saving migration to chain.
-- Saving artifacts
-
----
-
-- Total cost: 0.30379635 ETH
 
 # JACUZZI AVALANCHE
 
