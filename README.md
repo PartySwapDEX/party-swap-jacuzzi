@@ -1,4 +1,4 @@
-# V2 FUJI
+# V2
 
 Replacing 'PartyJacuzzi'
 
